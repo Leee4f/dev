@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamer's Dev Log - Bujo Style</title>
+    <style>
+        /* --- 1. Base / Dot Grid Background --- */
+        :root {
+            --bg-color: #fcfcfc;
+            --dot-color: #e0e0e0;
+            --text-color: #333;
+            --accent-color: #555;
+            --ink-fade: rgba(85, 85, 85, 0.1);
+        }
+
+        body {
+            margin: 0;
+            padding: 2rem;
+            background-color: var(--bg-color);
+            /* CSS Radial Gradient for Dot Grid */
+            background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
+            background-size: 20px 20px;
+            font-family: 'Courier New', Courier, monospace; /* Monospace for tech-minimal feel */
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            opacity: 0; /* JS will reveal */
+            transition: opacity 1s ease-in-out;
+        }
+
+        .notebook-page {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.8); /* Semi-transparent white to lift off dots */
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Soft shadow for notebook feel */
+        }
+
+        /* --- 2. Typography --- */
+        h1, h2, h3 {
+            font-weight: normal;
+            letter-spacing: 0.1rem;
+            border-bottom: 1px solid var(--accent-color);
+            display: inline-block;
+            margin-top: 0;
+        }
+
+        h1 { font-size: 1.5rem; margin-bottom: 2rem; }
+        h2 { font-size: 1.2rem; margin-bottom: 1rem; margin-top: 1.5rem; }
+
+        .subtitle {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 2rem;
+        }
+
+        /* --- 3. Layout (Flexbox) --- */
+        .log-container {
+            display: flex;
+            gap: 2rem;
+        }
+
+        @media (max-width: 600px) {
+            .log-container { flex-direction: column; }
+        }
+
+        /* --- 4. Timeline (Ideal Day Mode) --- */
+        .timeline-section {
+            flex: 1;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        /* The vertical line */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 14px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background-color: var(--accent-color);
+        }
+
+        .log-item {
+            position: relative;
+            margin-bottom: 1rem;
+            opacity: 0; /* JS will animate */
+            transform: translateY(10px);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .log-item:hover {
+            color: #000;
+            transform: translateX(5px);
+        }
+
+        .log-time {
+            position: absolute;
+            left: -40px;
+            font-size: 0.7rem;
+            color: #888;
+            width: 30px;
+            text-align: right;
+        }
+
+        /* The little dot */
+        .log-item::after {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background-color: var(--bg-color);
+            border: 1px solid var(--accent-color);
+            border-radius: 50%;
+        }
+
+        /* Ink bleed detail section */
+        .bleed-detail {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 5px;
+            padding-left: 10px;
+            height: 0;
+            overflow: hidden;
+            transition: height 0.5s ease-out, background 0.5s;
+            border-left: 2px solid transparent;
+        }
+
+        .bleed-detail.active {
+            height: auto;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            background: var(--ink-fade);
+            border-left: 2px solid var(--accent-color);
+        }
+
+
+        /* --- 5. Weekly / Projects (Summer Vacation Mode) --- */
+        .projects-section {
+            flex: 1;
+        }
+
+        .project-card {
+            border: 1px solid var(--dot-color);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-color);
+        }
+
+        .status {
+            font-size: 0.7rem;
+            color: #888;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="notebook-page">
+    <h1>GAMER'S DEV LOG &lt;BUJO_STYLE&gt;</h1>
+    <p class="subtitle">Log: Ideal Week / Dev Progress / Strategy</p>
+
+    <div class="log-container">
+        <div class="timeline-section">
+            <h2>DAILY LOG_ (Ideal)</h2>
+            <div class="timeline">
+                <div class="log-item" onclick="toggleDetail(this)">
+                    <span class="log-time">07:00</span>
+                    Wake up / French Study
+                    <div class="bleed-detail">Duolingo complete. Focus on verbs.</div>
+                </div>
+                <div class="log-item" onclick="toggleDetail(this)">
+                    <span class="log-time">09:00</span>
+                    Work / Dev Work
+                    <div class="bleed-detail">Godot physics optimization. Fixed collision issue on player character.</div>
+                </div>
+                <div class="log-item" onclick="toggleDetail(this)">
+                    <span class="log-time">13:00</span>
+                    Lunch / Game Time
+                    <div class="bleed-detail">Quick Zelda run. Note: Inventory UI is very clean. Try implementing similar flow.</div>
+                </div>
+                <div class="log-item" onclick="toggleDetail(this)">
+                    <span class="log-time">19:00</span>
+                    Done / Gym
+                    <div class="bleed-detail">Bench press 3x8. Leg day tomorrow.</div>
+                </div>
+                <div class="log-item" onclick="toggleDetail(this)">
+                    <span class="log-time">22:00</span>
+                    FREE TIME / Study
+                    <div class="bleed-detail">Reading "Clean Code". Drafted new enemy AI logic.</div>
+                </div>
+                <div class="log-item" onclick="toggleDetail(this)">
+                    <span class="log-time">23:30</span>
+                    Go to bed
+                    <div class="bleed-detail">Prepare for early start tomorrow.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="projects-section">
+            <h2>PROJECTS &amp; STRATEGY</h2>
+            
+            <div class="project-card">
+                <h3>Godot_Project</h3>
+                <p class="status">_Status: 60% complete</p>
+                <ul>
+                    <li>Combat logic (almost done)</li>
+                    <li>Asset implementation (waiting)</li>
+                </ul>
+            </div>
+
+            <div class="project-card">
+                <h3>Zelda Strategy</h3>
+                <p class="status">_Focus: Master Mode</p>
+                <ul>
+                    <li>Ganon speedrun prep</li>
+                    <li>Shrine location map optimized</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // --- JS: Subtle Motion & Interaction ---
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // 1. Reveal the page (Fade in)
+        document.body.style.opacity = 1;
+
+        // 2. Animate timeline items sequentially (Pencil draw feel)
+        const logItems = document.querySelectorAll('.log-item');
+        logItems.forEach((item, index) => {
+            setTimeout(() => {
+                item.style.opacity = 1;
+                item.style.transform = 'translateY(0)';
+            }, index * 200); // Staggered delay
+        });
+    });
+
+    // 3. Interactive Detail (Ink Bleed effect)
+    function toggleDetail(element) {
+        const detail = element.querySelector('.bleed-detail');
+        detail.classList.toggle('active');
+    }
+</script>
+
+</body>
+</html>
