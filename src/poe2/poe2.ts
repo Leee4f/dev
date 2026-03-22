@@ -45,6 +45,7 @@ function createCard(title: string, html: string): HTMLElement {
     "[&_td]:border-b [&_td]:border-retro-border/50 [&_td]:py-2 [&_td]:pr-3 [&_td]:align-top",
     "[&_a]:text-retro-accent [&_a]:underline [&_a]:decoration-retro-accent/30 [&_a]:hover:decoration-retro-accent",
     "[&_p]:my-2",
+    "[&_img]:max-w-full [&_img]:h-auto [&_img]:rounded-sm [&_img]:my-3 [&_img]:border [&_img]:border-retro-border",
   ].join(" ");
   inner.innerHTML = html;
 

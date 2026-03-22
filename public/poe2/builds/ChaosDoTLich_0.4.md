@@ -8,6 +8,8 @@ tags:
 ---
 # [0.4] ED Contagion Lich ビルド解説
 
+![Chaos DoT Lich](images/chaos-dot-lich.webp)
+
 > **結論:** Eternal Life を軸にした「ES が残る限りライフが減らない」防御構造と、Contagion による連鎖拡散型 Chaos DoT の組み合わせが核心。低投資でも高い耐久力と高密度マップでの殲滅力を両立する。
 
 原典: [DEADRABB1T — Mobalytics](https://mobalytics.gg/poe-2/builds/chaos-dot-lich-starter-deadrabbit) / [Twitch](https://www.twitch.tv/deadrabb1t)
