@@ -36,7 +36,7 @@ function extractThumbnail(html: string): { thumb: string | null; html: string } 
   return { thumb: match[1], html: html.replace(match[0], "") };
 }
 
-function createCard(title: string, html: string, baseDir: string): HTMLElement {
+function createCard(title: string, html: string, baseDir: string, rawMd: string): HTMLElement {
   const { thumb, html: bodyHtml } = extractThumbnail(html);
 
   const card = document.createElement("div");
@@ -60,6 +60,19 @@ function createCard(title: string, html: string, baseDir: string): HTMLElement {
   titleText.className = "flex-1";
   titleText.textContent = title;
   titleEl.appendChild(titleText);
+
+  const copyBtn = document.createElement("button");
+  copyBtn.textContent = "Copy";
+  copyBtn.className =
+    "text-xs text-retro-muted border border-retro-border px-2 py-0.5 rounded-sm hover:text-retro-accent hover:border-retro-accent transition-colors shrink-0";
+  copyBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    navigator.clipboard.writeText(rawMd).then(() => {
+      copyBtn.textContent = "Copied!";
+      setTimeout(() => { copyBtn.textContent = "Copy"; }, 1500);
+    });
+  });
+  titleEl.appendChild(copyBtn);
 
   const arrow = document.createElement("span");
   arrow.className = "text-retro-accent transition-transform duration-300 shrink-0";
@@ -150,7 +163,7 @@ async function renderSection(
       const titleMatch = md.match(/^#\s+(.+)$/m);
       const title = titleMatch ? titleMatch[1] : file.replace(".md", "");
 
-      container.appendChild(createCard(title, html, dir));
+      container.appendChild(createCard(title, html, dir, md));
     } catch (e) {
       console.error(`Failed to load ${dir}/${file}`, e);
     }
