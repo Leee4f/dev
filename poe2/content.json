@@ -1,0 +1,11 @@
+{
+  "builds": [
+    "example-build.md"
+  ],
+  "notes": [
+    "example-note.md"
+  ],
+  "tips": [
+    "example-tip.md"
+  ]
+}
