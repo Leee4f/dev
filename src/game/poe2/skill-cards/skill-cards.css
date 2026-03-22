@@ -1,0 +1,209 @@
+/* Skill & Support Cards — scoped styles */
+.sc-header {
+  border-bottom: 2px solid var(--color-retro-accent);
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+.sc-header h1 {
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--color-retro-text);
+}
+.sc-header .sc-hl {
+  color: var(--color-retro-accent);
+}
+.sc-header p {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-retro-muted);
+  margin-top: 0.3rem;
+  letter-spacing: 1px;
+}
+
+.sc-section-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--color-retro-accent);
+  margin-bottom: 0.75rem;
+}
+.sc-section-line {
+  border: none;
+  border-top: 1px dashed var(--color-retro-border);
+  margin-bottom: 1.5rem;
+}
+
+.sc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+  margin-bottom: 2.5rem;
+}
+
+.sc-card {
+  background: var(--color-retro-paper);
+  border: 1px solid var(--color-retro-border);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.15s;
+}
+.sc-card:hover {
+  border-color: var(--color-retro-muted);
+  transform: translateY(-2px);
+}
+
+.sc-card-head {
+  padding: 12px 16px 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--color-retro-border);
+}
+.sc-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.sc-card-title {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--color-retro-text);
+  font-weight: 500;
+}
+.sc-card-role {
+  font-size: 11px;
+  color: var(--color-retro-muted);
+}
+.sc-tags {
+  margin-left: auto;
+  display: flex;
+  gap: 4px;
+}
+.sc-tag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 2px 6px;
+  border-radius: 2px;
+  color: var(--color-retro-muted);
+  border: 1px solid var(--color-retro-border);
+}
+.sc-tag-main {
+  border-color: currentColor;
+}
+
+.sc-card-body {
+  padding: 12px 16px;
+}
+.sc-support-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+.sc-support-row:last-child {
+  border-bottom: none;
+}
+.sc-support-num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-retro-muted);
+  width: 16px;
+  text-align: center;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+.sc-support-info {
+  flex: 1;
+}
+.sc-support-name {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-retro-text);
+}
+.sc-support-effect {
+  font-size: 11px;
+  color: var(--color-retro-muted);
+  margin-top: 1px;
+}
+.sc-support-effect .more {
+  color: #7edc6a;
+  font-weight: 500;
+}
+.sc-support-effect .less {
+  color: #ef5350;
+}
+.sc-support-effect .note {
+  color: #fbbf24;
+  font-style: italic;
+}
+
+.sc-card-footer {
+  padding: 8px 16px 12px;
+  border-top: 1px solid var(--color-retro-border);
+  background: rgba(255, 255, 255, 0.01);
+}
+.sc-stat {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-retro-muted);
+  display: flex;
+  justify-content: space-between;
+}
+.sc-stat-val {
+  color: var(--color-retro-text);
+}
+
+.sc-legend {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--color-retro-border);
+}
+.sc-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--color-retro-muted);
+}
+.sc-legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+}
+
+.sc-footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-retro-muted);
+}
+.sc-footer a {
+  color: var(--color-retro-accent);
+  text-decoration: none;
+}
+.sc-footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+  .sc-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ED Contagion Lich — Skill & Support Cards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0e0e0e;
+  --card: #151515;
+  --card-hover: #1a1a1a;
+  --accent: #7edc6a;
+  --chaos: #c084fc;
+  --chaos-dim: rgba(192,132,252,0.10);
+  --defense: #60a5fa;
+  --defense-dim: rgba(96,165,250,0.10);
+  --debuff: #f472b6;
+  --debuff-dim: rgba(244,114,182,0.10);
+  --util: #fbbf24;
+  --util-dim: rgba(251,191,36,0.10);
+  --text: #d4d4d4;
+  --text-dim: #737373;
+  --text-bright: #f5f5f5;
+  --border: #2a2a2a;
+  --mono: 'Share Tech Mono', monospace;
+  --sans: 'Zen Kaku Gothic New', sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+body::before {
+  content:'';position:fixed;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.012) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events:none;z-index:0;
+}
+.page { position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:2rem 1.5rem 4rem; }
+
+.header { border-bottom:2px solid var(--accent);padding-bottom:1rem;margin-bottom:2rem; }
+.header h1 { font-family:var(--mono);font-size:1.3rem;font-weight:400;color:var(--text-bright); }
+.header h1 .hl { color:var(--accent); }
+.header p { font-family:var(--mono);font-size:11px;color:var(--text-dim);margin-top:0.3rem;letter-spacing:1px; }
+
+.section-label {
+  font-family:var(--mono);font-size:10px;text-transform:uppercase;
+  letter-spacing:3px;color:var(--accent);margin-bottom:0.75rem;
+}
+.section-line { border:none;border-top:1px dashed var(--border);margin-bottom:1.5rem; }
+
+.grid { display:grid;grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));gap:16px;margin-bottom:2.5rem; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.15s;
+}
+.card:hover { border-color: #3a3a3a; transform: translateY(-2px); }
+
+.card-head {
+  padding: 12px 16px 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.card-icon {
+  width: 36px; height: 36px;
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.card-icon.offense { background: var(--chaos-dim); color: var(--chaos); border: 1px solid rgba(192,132,252,0.2); }
+.card-icon.debuff { background: var(--debuff-dim); color: var(--debuff); border: 1px solid rgba(244,114,182,0.2); }
+.card-icon.defense { background: var(--defense-dim); color: var(--defense); border: 1px solid rgba(96,165,250,0.2); }
+.card-icon.util { background: var(--util-dim); color: var(--util); border: 1px solid rgba(251,191,36,0.2); }
+
+.card-title { font-family:var(--mono);font-size:14px;color:var(--text-bright);font-weight:500; }
+.card-role { font-size:11px;color:var(--text-dim); }
+.card-tags { margin-left:auto;display:flex;gap:4px; }
+.card-tag {
+  font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:1px;
+  padding:2px 6px;border-radius:2px;
+}
+.card-tag.main { color:var(--chaos);border:1px solid rgba(192,132,252,0.3); }
+.card-tag.sub { color:var(--text-dim);border:1px solid var(--border); }
+
+.card-body { padding: 12px 16px; }
+
+.support-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.support-row:last-child { border-bottom:none; }
+.support-num {
+  font-family:var(--mono);font-size:10px;color:var(--text-dim);
+  width:16px;text-align:center;flex-shrink:0;padding-top:2px;
+}
+.support-info { flex:1; }
+.support-name { font-family:var(--mono);font-size:12px;color:var(--text-bright); }
+.support-effect { font-size:11px;color:var(--text-dim);margin-top:1px; }
+.support-effect .more { color:var(--accent);font-weight:500; }
+.support-effect .less { color:#ef5350; }
+.support-effect .note { color:var(--util);font-style:italic; }
+
+.card-footer {
+  padding: 8px 16px 12px;
+  border-top: 1px solid var(--border);
+  background: rgba(255,255,255,0.01);
+}
+.card-stat { font-family:var(--mono);font-size:11px;color:var(--text-dim);display:flex;justify-content:space-between; }
+.card-stat .val { color:var(--text-bright); }
+
+.legend { display:flex;gap:20px;flex-wrap:wrap;margin-top:2rem;padding-top:1rem;border-top:1px dashed var(--border); }
+.legend-item { display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-dim); }
+.legend-dot { width:8px;height:8px;border-radius:2px; }
+
+.footer { margin-top:2rem;text-align:center;font-family:var(--mono);font-size:10px;color:var(--text-dim); }
+.footer a { color:var(--accent);text-decoration:none; }
+
+@media(max-width:700px){ .grid{grid-template-columns:1fr;} .page{padding:1rem;} }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="header">
+  <h1><span class="hl">[0.4]</span> ED Contagion Lich — Skill & Support Cards</h1>
+  <p>DEADRABB1T build / campaign variant / skill × support synergy map</p>
+</header>
+
+<!-- ═══ OFFENSE ═══ -->
+<div class="section-label">offense_</div>
+<hr class="section-line">
+<div class="grid">
+
+  <!-- Essence Drain -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-icon offense">ED</div>
+      <div>
+        <div class="card-title">Essence Drain</div>
+        <div class="card-role">Chaos DoT + 回復 — メイン火力</div>
+      </div>
+      <div class="card-tags"><span class="card-tag main">主力</span></div>
+    </div>
+    <div class="card-body">
+      <div class="support-row">
+        <div class="support-num">1</div>
+        <div class="support-info">
+          <div class="support-name">Chain</div>
+          <div class="support-effect">Projectile が複数敵に連鎖 → <span class="note">Contagion との二重カバー</span></div>
+        </div>
+      </div>
+      <div class="support-row">
+        <div class="support-num">2</div>
+        <div class="support-info">
+          <div class="support-name">Zenith II</div>
+          <div class="support-effect"><span class="more">30% more Spell Damage</span> / <span class="less">マナ90%以上維持</span><br><span class="note">Soulless Form で条件維持が容易（Lich特権）</span></div>
+        </div>
+      </div>
+      <div class="support-row">
+        <div class="support-num">3</div>
+        <div class="support-info">
+          <div class="support-name">Swift Affliction I</div>
+          <div class="support-effect"><span class="more">30% more non-Ailment DoT</span> / <span class="less">20% less Duration</span><br><span class="note">Contagion 再塗りで Duration 短縮が実質無害</span></div>
+        </div>
+      </div>
+      <div class="support-row">
+        <div class="support-num">4</div>
+        <div class="support-info">
+          <div class="support-name">Considered Casting</div>
+          <div class="support-effect"><span class="more">25% more Spell Hit Damage</span> / <span class="less">10% less Cast Speed</span><br><span class="note">DoT はキャスト頻度に依存しないので無害</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="card-stat"><span>More 合算（Asc込）</span><span class="val">x2.75</span></div>
+      <div class="card-stat"><span>Base DoT (Lv20)</span><span class="val">2,170/秒</span></div>
+    </div>
+  </div>
+
+  <!-- Contagion -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-icon offense">CT</div>
+      <div>
+        <div class="card-title">Contagion</div>
+        <div class="card-role">AoE debuff 拡散 — ED の配達役</div>
+      </div>
+      <div class="card-tags"><span class="card-tag main">拡散</span></div>
+    </div>
+    <div class="card-body">
+      <div class="support-row">
+        <div class="support-num">1</div>
+        <div class="support-info">
+          <div class="support-name">Rapid Casting</div>
+          <div class="support-effect">Cast Speed ↑ → <span class="note">素早く群れに撒ける</span></div>
+        </div>
+      </div>
+      <div class="support-row">
+        <div class="support-num">2</div>
+        <div class="support-info">
+          <div class="support-name">Magnified Area</div>
+          <div class="support-effect">AoE ↑ → <span class="note">拡散範囲を広げて漏らさない</span></div>
+        </div>
+      </div>
+      <div class="support-row">
+        <div class="support-num">3</div>
+        <div class="support-info">
+          <div class="support-name">Unleash</div>
+          <div class="support-effect">複数回同時キャスト → <span class="note">1アクションで広範囲カバー</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="card-stat"><span>役割</span><span class="val">ED の DoT を群れに配達</span></div>
+      <div class="card-stat"><span>自身の DoT</span><span class="val">微小（拡散用）</span></div>
+    </div>
+  </div>
+
+  <!-- Dark Effigy -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-icon offense">DE</div>
+      <div>
+        <div class="card-title">Dark Effigy</div>
+        <div class="card-role">Chaos Projectile トーテム</div>
+      </div>
+      <div class="card-tags"><span class="card-tag sub">補助</span><span class="card-tag sub">wither</span></div>
+    </div>
+    <div class="card-body">
+      <div class="support-row">
+        <div class="support-num">1</div>
+        <div class="support-info">
+          <div class="support-name">Poison I</div>
+          <div class="support-effect">毒付与確率 → <span class="note">debuff 枠 +1（攻撃頻度 3→4回/秒）</span></div>
+        </div>
+      </div>
+      <div class="support-row">
+        <div class="support-num">2</div>
+        <div class="support-info">
+          <div class="support-name">Withering Touch</div>
+          <div class="support-effect">ヒット時 Wither 付与 → <span class="note">ED の DoT を間接 x1.9 ブースト</span></div>
+        </div>
+      </div>
+      <div class="support-row">
+        <div class="support-num">3</div>
+        <div class="support-info">
+          <div class="support-name">Increase Limit</div>
+          <div class="support-effect">トーテム +1体 → <span class="note">ヒット DPS 約2倍 + Wither 維持安定</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="card-stat"><span>攻撃頻度</span><span class="val">4回/秒/体 × 2体</span></div>
+      <div class="card-stat"><span>ヒット DPS (Lv20)</span><span class="val">≈7,600/秒</span></div>
+      <div class="card-stat"><span>設計思想</span><span class="val">More 枠を捨てて間接貢献を最大化</span></div>
+    </div>
+  </div>
+
+  <!-- Chaos Bolt -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-icon offense">CB</div>
+      <div>
+        <div class="card-title">Chaos Bolt</div>
+        <div class="card-role">Wand Weapon Skill</div>
+      </div>
+      <div class="card-tags"><span class="card-tag sub">wither</span></div>
+    </div>
+    <div class="card-body">
+      <div class="support-row">
+        <div class="support-num">1</div>
+        <div class="support-info">
+          <div class="support-name">Unleash</div>
+          <div class="support-effect">複数回同時発射 → <span class="note">Wither スタック素早く蓄積</span></div>
+        </div>
+      </div>
+      <div class="support-row">
+        <div class="support-num">2</div>
+        <div class="support-info">
+          <div class="support-name">Considered Casting</div>
+          <div class="support-effect"><span class="more">25% more Spell Hit</span> / <span class="note">Wither 付与が主目的なので火力は副次的</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="card-stat"><span>主な役割</span><span class="val">Wither スタック維持（単体戦）</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ DEBUFF ═══ -->
+<div class="section-label">debuff_</div>
+<hr class="section-line">
+<div class="grid">
+
+  <!-- Despair -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-icon debuff">DP</div>
+      <div>
+        <div class="card-title">Despair</div>
+        <div class="card-role">Chaos 耐性低下カース</div>
+      </div>
+      <div class="card-tags"><span class="card-tag main">カース</span></div>
+    </div>
+    <div class="card-body">
+      <div class="support-row">
+        <div class="support-num">1</div>
+        <div class="support-info">
+          <div class="support-name">Curse Effect</div>
+          <div class="support-effect">カース効果 ↑ → <span class="note">-Chaos 耐性の絶対値が増加</span></div>
+        </div>
+      </div>
+      <div class="support-row">
+        <div class="support-num">2</div>
+        <div class="support-info">
+          <div class="support-name">Decaying Hex</div>
+          <div class="support-effect">Chaos DoT 付与 → <span class="note">Dark Effigy の debuff 枠 +1</span></div>
+        </div>
+      </div>
+      <div class="support-row">
+        <div class="support-num">3</div>
+        <div class="support-info">
+          <div class="support-name">Cursed Ground</div>
+          <div class="support-effect">地面にカース範囲を残す → <span class="note">カース維持が楽になる</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="card-stat"><span>敵デバフ乗数（例 -30%）</span><span class="val">x1.30</span></div>
+    </div>
+  </div>
+
+  <!-- Blasphemy + Temporal Chains -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-icon debuff">TC</div>
+      <div>
+        <div class="card-title">Blasphemy + Temporal Chains</div>
+        <div class="card-role">敵行動速度低下オーラ</div>
+      </div>
+      <div class="card-tags"><span class="card-tag sub">防御</span></div>
+    </div>
+    <div class="card-body">
+      <div class="support-row">
+        <div class="support-num">1</div>
+        <div class="support-info">
+          <div class="support-name">Slow Potency</div>
+          <div class="support-effect">Slow 効果 ↑ → <span class="note">敵の攻撃頻度をさらに下げる</span></div>
+        </div>
+      </div>
+      <div class="support-row">
+        <div class="support-num">2</div>
+        <div class="support-info">
+          <div class="support-name">Magnified Area</div>
+          <div class="support-effect">AoE ↑ → <span class="note">オーラ範囲拡大</span></div>
+        </div>
+      </div>
+      <div class="support-row">
+        <div class="support-num">3</div>
+        <div class="support-info">
+          <div class="support-name">Ritualistic Curse</div>
+          <div class="support-effect">カース効果 ↑ → <span class="note">Slow のかかりが強くなる</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="card-stat"><span>役割</span><span class="val">ES リチャージの隙間を確保</span></div>
+    </div>
+  </div>
+
+  <!-- Withering Presence -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-icon debuff">WP</div>
+      <div>
+        <div class="card-title">Withering Presence</div>
+        <div class="card-role">Wither 自動蓄積オーラ</div>
+      </div>
+      <div class="card-tags"><span class="card-tag sub">wither</span></div>
+    </div>
+    <div class="card-body">
+      <div class="support-row">
+        <div class="support-num">1</div>
+        <div class="support-info">
+          <div class="support-name">Prolonged Duration</div>
+          <div class="support-effect">持続時間 ↑ → <span class="note">Wither スタックが剥がれにくくなる</span></div>
+        </div>
+      </div>
+      <div class="support-row">
+        <div class="support-num">2</div>
+        <div class="support-info">
+          <div class="support-name">Chaos Mastery</div>
+          <div class="support-effect">+1 Skill Level → <span class="note">Wither 効果・蓄積速度向上</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="card-stat"><span>Wither 15stk 乗数</span><span class="val">≈ x1.90</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ UTILITY / DEFENSE ═══ -->
+<div class="section-label">utility & defense_</div>
+<hr class="section-line">
+<div class="grid">
+
+  <!-- Sigil of Power -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-icon util">SP</div>
+      <div>
+        <div class="card-title">Sigil of Power</div>
+        <div class="card-role">マナ消費で Spell Damage バフ</div>
+      </div>
+      <div class="card-tags"><span class="card-tag sub">バフ</span></div>
+    </div>
+    <div class="card-body">
+      <div class="support-row">
+        <div class="support-num">1</div>
+        <div class="support-info">
+          <div class="support-name">Prolonged Duration</div>
+          <div class="support-effect">持続時間 ↑ → <span class="note">Sigil を長く維持</span></div>
+        </div>
+      </div>
+      <div class="support-row">
+        <div class="support-num">2</div>
+        <div class="support-info">
+          <div class="support-name">Magnified Area</div>
+          <div class="support-effect">AoE ↑ → <span class="note">Sigil 内で動ける範囲拡大</span></div>
+        </div>
+      </div>
+      <div class="support-row">
+        <div class="support-num">3</div>
+        <div class="support-info">
+          <div class="support-name">Rapid Casting</div>
+          <div class="support-effect">Cast Speed ↑ → <span class="note">素早く設置</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="card-stat"><span>役割</span><span class="val">ステージ蓄積で % more Spell Damage</span></div>
+      <div class="card-stat"><span>武器セット2</span><span class="val">Chiming Staff 必須</span></div>
+    </div>
+  </div>
+
+  <!-- Unearth -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-icon util">UE</div>
+      <div>
+        <div class="card-title">Unearth</div>
+        <div class="card-role">死体生成ミニオン</div>
+      </div>
+      <div class="card-tags"><span class="card-tag sub">死体</span></div>
+    </div>
+    <div class="card-body">
+      <div class="support-row">
+        <div class="support-num">1</div>
+        <div class="support-info">
+          <div class="support-name">Minion Instability</div>
+          <div class="support-effect">ミニオン爆発 → <span class="note">追加の AoE ダメージ</span></div>
+        </div>
+      </div>
+      <div class="support-row">
+        <div class="support-num">2</div>
+        <div class="support-info">
+          <div class="support-name">Feeding Frenzy</div>
+          <div class="support-effect">ミニオン攻撃性 ↑ → <span class="note">素早く死体を供給</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="card-stat"><span>役割</span><span class="val">死体供給 + 微量の追加ダメージ</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ LEGEND ═══ -->
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:var(--chaos)"></div>Offense（攻撃）</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--debuff)"></div>Debuff（弱体化）</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--util)"></div>Utility（補助）</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div><span style="font-family:var(--mono)">more</span> = 乗算</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#ef5350"></div><span style="font-family:var(--mono)">less</span> = 代償</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--util)"></div><span style="font-style:italic">note</span> = 設計意図</div>
+</div>
+
+<footer class="footer">
+  <p>Build: <a href="https://mobalytics.gg/poe-2/builds/chaos-dot-lich-starter-deadrabbit">DEADRABB1T — Mobalytics</a> / Patch 0.4 Campaign Variant</p>
+</footer>
+
+</div>
+</body>
+</html>
