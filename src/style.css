@@ -4,16 +4,16 @@
   --font-sans: "Inter", "Noto Sans JP", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", "Noto Sans JP", monospace;
 
-  --color-retro-bg: #f5f0e8;
-  --color-retro-paper: #faf7f2;
-  --color-retro-text: #3b3024;
-  --color-retro-muted: #8a7e6e;
-  --color-retro-accent: #c07040;
-  --color-retro-border: #d6cdbf;
-  --color-retro-hover: #a85a30;
-  --color-retro-dot: #d6cdbf;
-  --color-retro-card-hover: #ede7db;
-  --color-retro-code-bg: #ece6d9;
+  --color-retro-bg: #0d1117;
+  --color-retro-paper: #161b22;
+  --color-retro-text: #e6edf3;
+  --color-retro-muted: #7d8590;
+  --color-retro-accent: #58a6ff;
+  --color-retro-border: #30363d;
+  --color-retro-hover: #79c0ff;
+  --color-retro-dot: #1c2128;
+  --color-retro-card-hover: #1c2128;
+  --color-retro-code-bg: #1c2128;
 }
 
 /* Dot grid background */
@@ -33,4 +33,19 @@ body {
 
 .katex {
   color: var(--color-retro-text);
+}
+
+/* Scrollbar (dark theme) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-retro-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-retro-border);
+  border-radius: 3px;
 }
