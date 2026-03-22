@@ -7,18 +7,39 @@ interface ContentIndex {
   tips: string[];
 }
 
-function createCard(title: string, html: string): HTMLElement {
+function extractThumbnail(html: string): { thumb: string | null; html: string } {
+  const match = html.match(/<p>\s*<img\s+src="([^"]+)"[^>]*>\s*<\/p>/);
+  if (!match) return { thumb: null, html };
+  return { thumb: match[1], html: html.replace(match[0], "") };
+}
+
+function createCard(title: string, html: string, baseDir: string): HTMLElement {
+  const { thumb, html: bodyHtml } = extractThumbnail(html);
+
   const card = document.createElement("div");
   card.className =
     "border border-retro-border mb-3 rounded-sm transition-all hover:border-retro-accent";
 
   const titleEl = document.createElement("div");
   titleEl.className =
-    "px-4 py-3 cursor-pointer text-sm font-medium flex justify-between items-center hover:bg-retro-card-hover transition-colors";
-  titleEl.textContent = title;
+    "px-4 py-3 cursor-pointer text-sm font-medium flex items-center gap-3 hover:bg-retro-card-hover transition-colors";
+
+  if (thumb) {
+    const img = document.createElement("img");
+    img.src = baseDir + "/" + thumb;
+    img.alt = title;
+    img.className =
+      "w-12 h-12 object-cover rounded-sm border border-retro-border shrink-0";
+    titleEl.appendChild(img);
+  }
+
+  const titleText = document.createElement("span");
+  titleText.className = "flex-1";
+  titleText.textContent = title;
+  titleEl.appendChild(titleText);
 
   const arrow = document.createElement("span");
-  arrow.className = "text-retro-accent transition-transform duration-300";
+  arrow.className = "text-retro-accent transition-transform duration-300 shrink-0";
   arrow.textContent = ">";
   titleEl.appendChild(arrow);
 
@@ -47,7 +68,7 @@ function createCard(title: string, html: string): HTMLElement {
     "[&_p]:my-2",
     "[&_img]:max-w-full [&_img]:h-auto [&_img]:rounded-sm [&_img]:my-3 [&_img]:border [&_img]:border-retro-border",
   ].join(" ");
-  inner.innerHTML = html;
+  inner.innerHTML = bodyHtml;
 
   body.appendChild(inner);
   card.appendChild(titleEl);
@@ -105,7 +126,7 @@ async function renderSection(
       const titleMatch = md.match(/^#\s+(.+)$/m);
       const title = titleMatch ? titleMatch[1] : file.replace(".md", "");
 
-      container.appendChild(createCard(title, html));
+      container.appendChild(createCard(title, html, dir));
     } catch (e) {
       console.error(`Failed to load ${dir}/${file}`, e);
     }
