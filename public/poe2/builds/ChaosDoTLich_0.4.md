@@ -84,34 +84,34 @@ Essence Drain の最終 DoT DPS は以下の乗算チェーンで決まる:
 
 #### ① Base Chaos DoT（ジェムレベル依存）
 
-- Lv1: 42/秒 → Lv20: 2,170/秒
-- ジェムレベルだけで決まるため武器 DPS に依存しない
-- `+Chaos Skill Level` の装備が Base 値を直接増加 → 投資対効果が高い
+  - Lv1: 42/秒 → Lv20: 2,170/秒
+  - ジェムレベルだけで決まるため武器 DPS に依存しない
+  - `+Chaos Skill Level` の装備が Base 値を直接増加 → 投資対効果が高い
 
 #### ② Increased（加算合計 → 1つの乗数）
 
-- Increased Spell Damage + Increased Chaos Damage + Increased DoT の合計
-- **ED 特権**: 通常 DoT には Spell Damage は乗らないが、ED と Contagion は例外として明示されている
-- 加算なので収穫逓減が発生する（+200% → x3.0 に +50% 追加しても x3.5 で 16.7% しか増えない）
+  - Increased Spell Damage + Increased Chaos Damage + Increased DoT の合計
+  - **ED 特権**: 通常 DoT には Spell Damage は乗らないが、ED と Contagion は例外として明示されている
+  - 加算なので収穫逓減が発生する（+200% → x3.0 に +50% 追加しても x3.5 で 16.7% しか増えない）
 
 #### ③ More / Less（サポートジェム同士が乗算）
 
-- More 同士は互いに掛け合わされる → 1つ追加するたび「現在の合計 DPS」に対して乗算
-- 主要源: Swift Affliction, Zenith, Eldritch Empowerment 等
-- → [[#4_ サポートジェム乗算構造]] で詳述
+  - More 同士は互いに掛け合わされる → 1つ追加するたび「現在の合計 DPS」に対して乗算
+  - 主要源: Swift Affliction, Zenith, Eldritch Empowerment 等
+  - → [[#4_ サポートジェム乗算構造]] で詳述
 
 #### ④ DoT Multiplier（独立乗算枠）
 
-- Increased とも More とも別枠で掛かる
-- DoT Multi 同士は加算（+20% × 2 = +40% → x1.40）
-- 少量でも効率が良い（独立枠なので他の数値に埋もれない）
+  - Increased とも More とも別枠で掛かる
+  - DoT Multi 同士は加算（+20% × 2 = +40% → x1.40）
+  - 少量でも効率が良い（独立枠なので他の数値に埋もれない）
 
 #### ⑤ 敵側デバフ（被ダメ増加）
 
-- **Despair**: -Chaos 耐性（例: -30% → x1.30）
-- **Wither**: 1スタックあたり約 6% 被 Chaos 増加、最大スタック時に大幅な実質 More
-- Wither 15stk (x1.90) + Despair -30% (x1.30) = 合計約 **x2.47**
-- 自分側のスケーリングを全て終えた後にさらに掛かるため、ボス戦では Wither 維持が火力に直結
+  - **Despair**: -Chaos 耐性（例: -30% → x1.30）
+  - **Wither**: 1スタックあたり約 6% 被 Chaos 増加、最大スタック時に大幅な実質 More
+  - Wither 15stk (x1.90) + Despair -30% (x1.30) = 合計約 **x2.47**
+  - 自分側のスケーリングを全て終えた後にさらに掛かるため、ボス戦では Wither 維持が火力に直結
 
 ### 回復への還元
 
