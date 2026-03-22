@@ -1,6 +1,7 @@
 {
   "builds": [
-    "example-build.md"
+    "example-build.md",
+    "ChaosDoTLich_0.4.md"
   ],
   "notes": [
     "example-note.md"
