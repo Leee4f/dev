@@ -10,15 +10,15 @@ interface ContentIndex {
 function createCard(title: string, html: string): HTMLElement {
   const card = document.createElement("div");
   card.className =
-    "border border-gray-200 mb-3 transition-colors hover:border-gray-500";
+    "border border-retro-border mb-3 rounded-sm transition-all hover:border-retro-accent";
 
   const titleEl = document.createElement("div");
   titleEl.className =
-    "px-4 py-3 cursor-pointer text-sm flex justify-between items-center";
+    "px-4 py-3 cursor-pointer text-sm font-medium flex justify-between items-center hover:bg-retro-card-hover transition-colors";
   titleEl.textContent = title;
 
   const arrow = document.createElement("span");
-  arrow.className = "text-gray-500 transition-transform duration-300";
+  arrow.className = "text-retro-accent transition-transform duration-300";
   arrow.textContent = ">";
   titleEl.appendChild(arrow);
 
@@ -26,8 +26,26 @@ function createCard(title: string, html: string): HTMLElement {
   body.className = "overflow-hidden transition-all duration-400 h-0";
 
   const inner = document.createElement("div");
-  inner.className =
-    "px-4 pb-4 text-sm leading-relaxed [&_h1]:text-base [&_h1]:font-normal [&_h1]:mt-3 [&_h1]:mb-2 [&_h2]:text-sm [&_h2]:font-normal [&_h2]:mt-3 [&_h2]:mb-2 [&_h3]:text-sm [&_h3]:font-normal [&_h3]:mt-3 [&_h3]:mb-2 [&_ul]:pl-5 [&_li]:mb-1 [&_strong]:text-black [&_code]:bg-gray-100 [&_code]:px-1 [&_code]:text-xs";
+  inner.className = [
+    "px-4 pb-4 text-sm leading-relaxed",
+    "[&_h1]:text-base [&_h1]:font-medium [&_h1]:mt-4 [&_h1]:mb-2 [&_h1]:text-retro-text",
+    "[&_h2]:text-sm [&_h2]:font-medium [&_h2]:mt-4 [&_h2]:mb-2 [&_h2]:text-retro-accent [&_h2]:border-b [&_h2]:border-retro-border [&_h2]:pb-1",
+    "[&_h3]:text-sm [&_h3]:font-medium [&_h3]:mt-3 [&_h3]:mb-2 [&_h3]:text-retro-text/80",
+    "[&_h4]:text-sm [&_h4]:font-medium [&_h4]:mt-3 [&_h4]:mb-1 [&_h4]:text-retro-muted",
+    "[&_ul]:pl-5 [&_ul]:my-2 [&_li]:mb-1 [&_li]:text-retro-text/80",
+    "[&_ol]:pl-5 [&_ol]:my-2",
+    "[&_strong]:text-retro-text [&_strong]:font-medium",
+    "[&_code]:bg-retro-code-bg [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:text-xs [&_code]:font-mono [&_code]:rounded-sm",
+    "[&_pre]:bg-retro-code-bg [&_pre]:p-4 [&_pre]:rounded-sm [&_pre]:overflow-x-auto [&_pre]:my-3 [&_pre]:text-xs [&_pre]:font-mono [&_pre]:leading-relaxed",
+    "[&_pre_code]:bg-transparent [&_pre_code]:p-0",
+    "[&_blockquote]:border-l-2 [&_blockquote]:border-retro-accent [&_blockquote]:pl-4 [&_blockquote]:my-3 [&_blockquote]:text-retro-text/70 [&_blockquote]:italic",
+    "[&_hr]:border-retro-border [&_hr]:my-4",
+    "[&_table]:w-full [&_table]:my-3 [&_table]:text-xs",
+    "[&_th]:text-left [&_th]:border-b [&_th]:border-retro-border [&_th]:pb-2 [&_th]:pr-3 [&_th]:font-medium",
+    "[&_td]:border-b [&_td]:border-retro-border/50 [&_td]:py-2 [&_td]:pr-3 [&_td]:align-top",
+    "[&_a]:text-retro-accent [&_a]:underline [&_a]:decoration-retro-accent/30 [&_a]:hover:decoration-retro-accent",
+    "[&_p]:my-2",
+  ].join(" ");
   inner.innerHTML = html;
 
   body.appendChild(inner);
@@ -70,7 +88,7 @@ async function renderSection(
 
   if (!files || files.length === 0) {
     container.innerHTML =
-      '<p class="text-gray-400 text-sm italic py-4">-- no entries yet --</p>';
+      '<p class="text-retro-muted text-sm italic py-4">-- no entries yet --</p>';
     return;
   }
 

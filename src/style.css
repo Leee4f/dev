@@ -1,7 +1,23 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: "Inter", "Noto Sans JP", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Noto Sans JP", monospace;
+
+  --color-retro-bg: #f5f0e8;
+  --color-retro-paper: #faf7f2;
+  --color-retro-text: #3b3024;
+  --color-retro-muted: #8a7e6e;
+  --color-retro-accent: #c07040;
+  --color-retro-border: #d6cdbf;
+  --color-retro-hover: #a85a30;
+  --color-retro-dot: #d6cdbf;
+  --color-retro-card-hover: #ede7db;
+  --color-retro-code-bg: #ece6d9;
+}
+
 /* Dot grid background */
 body {
-  background-image: radial-gradient(#e0e0e0 1px, transparent 1px);
+  background-image: radial-gradient(var(--color-retro-dot) 1px, transparent 1px);
   background-size: 20px 20px;
 }
