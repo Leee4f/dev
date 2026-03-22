@@ -49,12 +49,12 @@ function createCard(title: string, html: string, baseDir: string): HTMLElement {
   const inner = document.createElement("div");
   inner.className = [
     "px-4 pb-4 text-sm leading-relaxed",
-    "[&_h1]:text-base [&_h1]:font-medium [&_h1]:mt-4 [&_h1]:mb-2 [&_h1]:text-retro-text",
-    "[&_h2]:text-sm [&_h2]:font-medium [&_h2]:mt-4 [&_h2]:mb-2 [&_h2]:text-retro-accent [&_h2]:border-b [&_h2]:border-retro-border [&_h2]:pb-1",
-    "[&_h3]:text-sm [&_h3]:font-medium [&_h3]:mt-3 [&_h3]:mb-2 [&_h3]:text-retro-text/80",
+    "[&_h1]:text-xl [&_h1]:font-semibold [&_h1]:mt-6 [&_h1]:mb-3 [&_h1]:text-retro-text",
+    "[&_h2]:text-lg [&_h2]:font-medium [&_h2]:mt-5 [&_h2]:mb-2 [&_h2]:text-retro-accent [&_h2]:border-b [&_h2]:border-retro-border [&_h2]:pb-1",
+    "[&_h3]:text-base [&_h3]:font-medium [&_h3]:mt-4 [&_h3]:mb-2 [&_h3]:text-retro-text/90",
     "[&_h4]:text-sm [&_h4]:font-medium [&_h4]:mt-3 [&_h4]:mb-1 [&_h4]:text-retro-muted",
-    "[&_ul]:pl-5 [&_ul]:my-2 [&_li]:mb-1 [&_li]:text-retro-text/80",
-    "[&_ol]:pl-5 [&_ol]:my-2",
+    "[&_ul]:pl-5 [&_ul]:my-2 [&_ul]:list-disc [&_li]:mb-1 [&_li]:text-retro-text/80",
+    "[&_ol]:pl-5 [&_ol]:my-2 [&_ol]:list-decimal",
     "[&_strong]:text-retro-text [&_strong]:font-medium",
     "[&_code]:bg-retro-code-bg [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:text-xs [&_code]:font-mono [&_code]:rounded-sm",
     "[&_pre]:bg-retro-code-bg [&_pre]:p-4 [&_pre]:rounded-sm [&_pre]:overflow-x-auto [&_pre]:my-3 [&_pre]:text-xs [&_pre]:font-mono [&_pre]:leading-relaxed",
