@@ -21,3 +21,16 @@ body {
   background-image: radial-gradient(var(--color-retro-dot) 1px, transparent 1px);
   background-size: 20px 20px;
 }
+
+/* KaTeX math styling */
+.katex-display {
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  background: var(--color-retro-code-bg);
+  border-radius: 2px;
+  overflow-x: auto;
+}
+
+.katex {
+  color: var(--color-retro-text);
+}

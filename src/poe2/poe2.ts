@@ -1,5 +1,27 @@
 import "../style.css";
 import { marked } from "marked";
+import katex from "katex";
+import "katex/dist/katex.min.css";
+
+function renderMath(html: string): string {
+  // Block math: $$...$$
+  html = html.replace(/\$\$([\s\S]+?)\$\$/g, (_, tex: string) => {
+    try {
+      return katex.renderToString(tex.trim(), { displayMode: true, throwOnError: false });
+    } catch {
+      return `<code>${tex.trim()}</code>`;
+    }
+  });
+  // Inline math: $...$  (but not $$)
+  html = html.replace(/(?<!\$)\$(?!\$)(.+?)(?<!\$)\$(?!\$)/g, (_, tex: string) => {
+    try {
+      return katex.renderToString(tex.trim(), { displayMode: false, throwOnError: false });
+    } catch {
+      return `<code>${tex.trim()}</code>`;
+    }
+  });
+  return html;
+}
 
 interface ContentIndex {
   builds: string[];
@@ -122,7 +144,7 @@ async function renderSection(
       if (!res.ok) continue;
       const raw = await res.text();
       const md = raw.replace(/^---\n[\s\S]*?\n---\n/, "");
-      const html = await marked.parse(md);
+      const html = renderMath(await marked.parse(md));
 
       const titleMatch = md.match(/^#\s+(.+)$/m);
       const title = titleMatch ? titleMatch[1] : file.replace(".md", "");

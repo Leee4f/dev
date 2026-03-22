@@ -22,6 +22,7 @@ Vite + TypeScript + Tailwind CSS で構築。
 | **TypeScript** | ロジック（Markdown読み込み・カードUI等） |
 | **Tailwind CSS** | スタイリング（ユーティリティクラスベース） |
 | **marked** | Markdown → HTML 変換（クライアントサイド） |
+| **KaTeX** | LaTeX 数式レンダリング |
 | **GitHub Actions** | push 時に自動ビルド → GitHub Pages へデプロイ |
 
 ---
@@ -113,6 +114,19 @@ npm run preview   # ビルド結果をローカルで確認
 - サムネイルは本文からは自動的に除去される（二重表示にならない）
 - 画像は `builds/images/` のように `images/` サブディレクトリに置く
 - 画像形式は webp, png, jpg いずれも対応
+
+**数式（KaTeX）：**
+
+インライン数式とブロック数式が使える：
+
+```markdown
+インライン: ダメージは $x \times 1.5$ で計算される。
+
+ブロック（独立した行に表示）:
+$$\text{Final DPS} = \text{Base DoT} \times (1 + \sum \text{Increased}) \times \prod (1 + \text{More})$$
+```
+
+LaTeX 記法がそのまま使える。`\text{}` で通常テキスト、`\times` で乗算記号、`\frac{a}{b}` で分数など。
 
 ### 3. content.json にファイル名を追加
 
