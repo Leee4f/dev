@@ -120,7 +120,8 @@ async function renderSection(
     try {
       const res = await fetch(dir + "/" + file);
       if (!res.ok) continue;
-      const md = await res.text();
+      const raw = await res.text();
+      const md = raw.replace(/^---\n[\s\S]*?\n---\n/, "");
       const html = await marked.parse(md);
 
       const titleMatch = md.match(/^#\s+(.+)$/m);
