@@ -1,12 +1,14 @@
 {
   "builds": [
-    "example-build.md",
     "ChaosDoTLich_0.4.md"
   ],
-  "notes": [
-    "example-note.md"
-  ],
+  "notes": [],
   "tips": [
-    "example-tip.md"
+    "Essence Drain (ED) 継続ダメージ計算式.md",
+    "基本ダメージ計算式(Damage Calculate).md",
+    "混沌属性スケーリング：萎縮 (Wither).md",
+    "試練の種類_0.4.md",
+    "第3章で確定で下級宝飾職人のオーブ(Jeweller's Orb)を手に入れる方法_0.4.md",
+    "非同期トレード(Instant Buyout).md"
   ]
 }
