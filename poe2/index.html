@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Path of Exile 2 - Notes & Builds</title>
+    <style>
+        :root {
+            --bg-color: #fcfcfc;
+            --dot-color: #e0e0e0;
+            --text-color: #333;
+            --accent-color: #555;
+            --ink-fade: rgba(85, 85, 85, 0.1);
+        }
+
+        body {
+            margin: 0;
+            padding: 2rem;
+            background-color: var(--bg-color);
+            background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
+            background-size: 20px 20px;
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .notebook-page {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        h1, h2, h3 {
+            font-weight: normal;
+            letter-spacing: 0.1rem;
+            border-bottom: 1px solid var(--accent-color);
+            display: inline-block;
+            margin-top: 0;
+        }
+
+        h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.2rem; margin-bottom: 1rem; margin-top: 1.5rem; }
+        h3 { font-size: 1rem; margin-bottom: 0.5rem; margin-top: 1rem; }
+
+        .breadcrumb {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 2rem;
+        }
+
+        .breadcrumb a {
+            color: #888;
+            text-decoration: none;
+            border-bottom: 1px dashed #888;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--text-color);
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .build-card {
+            border: 1px solid var(--dot-color);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        .build-card:hover {
+            border-color: var(--accent-color);
+        }
+
+        .build-card .tag {
+            font-size: 0.7rem;
+            color: #888;
+            margin-right: 0.5rem;
+        }
+
+        .note-item {
+            position: relative;
+            padding: 0.5rem 0 0.5rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .note-item:hover {
+            color: #000;
+            transform: translateX(5px);
+        }
+
+        .note-item::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        .note-detail {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 5px;
+            padding-left: 10px;
+            height: 0;
+            overflow: hidden;
+            transition: height 0.5s ease-out, background 0.5s;
+            border-left: 2px solid transparent;
+        }
+
+        .note-detail.active {
+            height: auto;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            background: var(--ink-fade);
+            border-left: 2px solid var(--accent-color);
+        }
+
+        .status {
+            font-size: 0.7rem;
+            color: #888;
+        }
+
+        .empty-note {
+            color: #aaa;
+            font-size: 0.85rem;
+            font-style: italic;
+            padding: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="notebook-page">
+    <h1>PATH OF EXILE 2_</h1>
+    <div class="breadcrumb"><a href="../">&lt; BACK TO LOG</a></div>
+
+    <!-- Builds Section -->
+    <div class="section">
+        <h2>BUILDS_</h2>
+        <p class="empty-note">-- build notes will be added here --</p>
+        <!--
+        <div class="build-card">
+            <h3>Build Name</h3>
+            <span class="tag">[Class]</span>
+            <span class="tag">[Patch X.X]</span>
+            <p class="status">_Status: Leveling / Mapping / Endgame</p>
+            <ul>
+                <li>Key skill / ascendancy</li>
+                <li>Core items</li>
+            </ul>
+        </div>
+        -->
+    </div>
+
+    <!-- Gameplay Notes Section -->
+    <div class="section">
+        <h2>GAMEPLAY NOTES_</h2>
+        <p class="empty-note">-- gameplay findings will be added here --</p>
+        <!--
+        <div class="note-item" onclick="toggleDetail(this)">
+            Note title here
+            <div class="note-detail">Detail content here.</div>
+        </div>
+        -->
+    </div>
+
+    <!-- Tips & Mechanics Section -->
+    <div class="section">
+        <h2>TIPS &amp; MECHANICS_</h2>
+        <p class="empty-note">-- tips and mechanics notes will be added here --</p>
+        <!--
+        <div class="note-item" onclick="toggleDetail(this)">
+            Mechanic or tip title
+            <div class="note-detail">Explanation or detail.</div>
+        </div>
+        -->
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.body.style.opacity = 1;
+    });
+
+    function toggleDetail(element) {
+        const detail = element.querySelector('.note-detail');
+        detail.classList.toggle('active');
+    }
+</script>
+
+</body>
+</html>
