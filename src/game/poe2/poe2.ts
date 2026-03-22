@@ -1,4 +1,5 @@
-import "../style.css";
+import "../../style.css";
+import { createNav } from "../../components/nav";
 import { marked } from "marked";
 import katex from "katex";
 import "katex/dist/katex.min.css";
@@ -157,6 +158,8 @@ async function renderSection(
 }
 
 async function main(): Promise<void> {
+  document.getElementById("nav")?.appendChild(createNav("GAME"));
+
   try {
     const res = await fetch("content.json");
     const content: ContentIndex = await res.json();

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gamer's Dev Log</title>
+    <title>KEII-DEV</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -12,25 +12,29 @@
 <body class="m-0 p-8 bg-retro-bg font-sans text-retro-text flex justify-center opacity-0 transition-opacity duration-1000">
 
 <div class="w-full max-w-3xl bg-retro-paper p-8 shadow-sm rounded-sm">
+    <div id="nav"></div>
+
     <h1 class="text-2xl font-medium tracking-wide border-b-2 border-retro-accent inline-block mb-2 pb-1">
-        GAMER'S DEV LOG
+        KEII-DEV
     </h1>
-    <p class="text-xs text-retro-muted mb-8 mt-1">Log: Dev Progress / Strategy</p>
+    <p class="text-xs text-retro-muted mb-8 mt-1">Knowledge Base: Game / Book / Dev</p>
 
-    <h2 class="text-lg font-medium tracking-wide border-b border-retro-border inline-block mb-4 mt-6 pb-1">
-        PROJECTS &amp; STRATEGY
-    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <a href="/game/" class="block border border-retro-border p-5 rounded-sm transition-all hover:border-retro-accent hover:bg-retro-card-hover no-underline text-inherit">
+            <h2 class="text-lg font-medium tracking-wide text-retro-accent mb-2">GAME</h2>
+            <p class="text-xs text-retro-muted leading-relaxed">ゲーム攻略・ビルド情報・メカニクス解説</p>
+        </a>
 
-    <a href="./poe2/" class="block border border-retro-border p-5 mb-4 rounded-sm transition-all hover:border-retro-accent hover:bg-retro-card-hover no-underline text-inherit">
-        <h3 class="text-base font-medium tracking-wide inline-block border-b border-dashed border-retro-accent mb-1 text-retro-accent">
-            Path of Exile 2
-        </h3>
-        <p class="text-xs text-retro-muted mt-1">Type: Game Notes &amp; Builds</p>
-        <ul class="mt-3 ml-4 list-disc text-sm leading-relaxed text-retro-text/80">
-            <li>Build guides &amp; theory</li>
-            <li>Gameplay tips &amp; findings</li>
-        </ul>
-    </a>
+        <a href="/book/" class="block border border-retro-border p-5 rounded-sm transition-all hover:border-retro-accent hover:bg-retro-card-hover no-underline text-inherit">
+            <h2 class="text-lg font-medium tracking-wide text-retro-accent mb-2">BOOK</h2>
+            <p class="text-xs text-retro-muted leading-relaxed">読書メモ・書評・要約</p>
+        </a>
+
+        <a href="/dev/" class="block border border-retro-border p-5 rounded-sm transition-all hover:border-retro-accent hover:bg-retro-card-hover no-underline text-inherit">
+            <h2 class="text-lg font-medium tracking-wide text-retro-accent mb-2">DEV</h2>
+            <p class="text-xs text-retro-muted leading-relaxed">開発ログ・技術メモ・ツール</p>
+        </a>
+    </div>
 </div>
 
 </body>

@@ -12,7 +12,10 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, "src/index.html"),
-        poe2: resolve(__dirname, "src/poe2/index.html"),
+        game: resolve(__dirname, "src/game/index.html"),
+        "game-poe2": resolve(__dirname, "src/game/poe2/index.html"),
+        book: resolve(__dirname, "src/book/index.html"),
+        dev: resolve(__dirname, "src/dev/index.html"),
       },
     },
   },
