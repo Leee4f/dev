@@ -6,35 +6,79 @@
     <title>KEII-DEV</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <script type="module" src="./main.ts"></script>
 </head>
-<body class="m-0 p-8 bg-retro-bg font-sans text-retro-text flex justify-center opacity-0 transition-opacity duration-1000">
+<body class="m-0 bg-retro-bg font-sans text-retro-text opacity-0 transition-opacity duration-700">
 
-<div class="w-full max-w-3xl bg-retro-paper p-8 shadow-sm rounded-sm">
+<!-- Top accent bar -->
+<div class="h-[3px] bg-retro-accent w-full"></div>
+
+<div class="max-w-4xl mx-auto px-8 py-16">
     <div id="nav"></div>
 
-    <h1 class="text-2xl font-medium tracking-wide border-b-2 border-retro-accent inline-block mb-2 pb-1">
-        KEII-DEV
-    </h1>
-    <p class="text-xs text-retro-muted mb-8 mt-1">Knowledge Base: Game / Book / Dev</p>
+    <!-- Hero -->
+    <header class="mt-16 mb-16">
+        <p class="font-mono text-[11px] tracking-[0.3em] text-retro-muted uppercase mb-4">Personal Knowledge Base</p>
+        <h1 class="text-5xl sm:text-6xl font-bold tracking-tight leading-none mb-4">
+            <span class="text-retro-text">KEII</span><span class="text-retro-accent">-DEV</span>
+        </h1>
+        <p class="text-base text-retro-muted leading-relaxed max-w-md mt-6">
+            ゲーム攻略、読書メモ、開発ログ。<br>
+            個人的な知見を整理・蓄積するナレッジベース。
+        </p>
+    </header>
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <a href="/game/" class="block border border-retro-border p-5 rounded-sm transition-all hover:border-retro-accent hover:bg-retro-card-hover no-underline text-inherit">
-            <h2 class="text-lg font-medium tracking-wide text-retro-accent mb-2">GAME</h2>
+    <hr class="swiss-rule mb-16">
+
+    <!-- Categories -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+
+        <a href="/game/" class="cat-card block bg-retro-paper border border-retro-border rounded-sm p-6 no-underline text-inherit group">
+            <div class="flex items-baseline justify-between mb-4">
+                <span class="section-num">01</span>
+                <span class="text-retro-accent text-xs opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </div>
+            <h2 class="text-xl font-bold tracking-wide text-retro-text mb-2">GAME</h2>
             <p class="text-xs text-retro-muted leading-relaxed">ゲーム攻略・ビルド情報・メカニクス解説</p>
+            <div class="mt-4 pt-3 border-t border-retro-border">
+                <span class="font-mono text-[10px] text-retro-muted tracking-wider">PATH OF EXILE 2</span>
+            </div>
         </a>
 
-        <a href="/book/" class="block border border-retro-border p-5 rounded-sm transition-all hover:border-retro-accent hover:bg-retro-card-hover no-underline text-inherit">
-            <h2 class="text-lg font-medium tracking-wide text-retro-accent mb-2">BOOK</h2>
+        <a href="/book/" class="cat-card block bg-retro-paper border border-retro-border rounded-sm p-6 no-underline text-inherit group">
+            <div class="flex items-baseline justify-between mb-4">
+                <span class="section-num">02</span>
+                <span class="text-retro-accent text-xs opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </div>
+            <h2 class="text-xl font-bold tracking-wide text-retro-text mb-2">BOOK</h2>
             <p class="text-xs text-retro-muted leading-relaxed">読書メモ・書評・要約</p>
+            <div class="mt-4 pt-3 border-t border-retro-border">
+                <span class="font-mono text-[10px] text-retro-muted tracking-wider">COMING SOON</span>
+            </div>
         </a>
 
-        <a href="/dev/" class="block border border-retro-border p-5 rounded-sm transition-all hover:border-retro-accent hover:bg-retro-card-hover no-underline text-inherit">
-            <h2 class="text-lg font-medium tracking-wide text-retro-accent mb-2">DEV</h2>
+        <a href="/dev/" class="cat-card block bg-retro-paper border border-retro-border rounded-sm p-6 no-underline text-inherit group">
+            <div class="flex items-baseline justify-between mb-4">
+                <span class="section-num">03</span>
+                <span class="text-retro-accent text-xs opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </div>
+            <h2 class="text-xl font-bold tracking-wide text-retro-text mb-2">DEV</h2>
             <p class="text-xs text-retro-muted leading-relaxed">開発ログ・技術メモ・ツール</p>
+            <div class="mt-4 pt-3 border-t border-retro-border">
+                <span class="font-mono text-[10px] text-retro-muted tracking-wider">COMING SOON</span>
+            </div>
         </a>
+
     </div>
+
+    <!-- Footer -->
+    <footer class="mt-24 pt-6 border-t border-retro-border">
+        <div class="flex justify-between items-center">
+            <span class="font-mono text-[10px] text-retro-muted tracking-wider">KEII-DEV.COM</span>
+            <span class="font-mono text-[10px] text-retro-muted tracking-wider">© 2025</span>
+        </div>
+    </footer>
 </div>
 
 </body>

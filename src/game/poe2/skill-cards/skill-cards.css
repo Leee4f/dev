@@ -50,8 +50,9 @@
   transition: border-color 0.2s, transform 0.15s;
 }
 .sc-card:hover {
-  border-color: var(--color-retro-muted);
+  border-color: var(--color-retro-subtle);
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(44, 36, 24, 0.08);
 }
 
 .sc-card-head {
@@ -111,7 +112,7 @@
   align-items: flex-start;
   gap: 8px;
   padding: 6px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 .sc-support-row:last-child {
   border-bottom: none;
@@ -139,21 +140,21 @@
   margin-top: 1px;
 }
 .sc-support-effect .more {
-  color: #7edc6a;
+  color: var(--color-retro-accent);
   font-weight: 500;
 }
 .sc-support-effect .less {
-  color: #ef5350;
+  color: #c0392b;
 }
 .sc-support-effect .note {
-  color: #fbbf24;
+  color: var(--color-retro-hover);
   font-style: italic;
 }
 
 .sc-card-footer {
   padding: 8px 16px 12px;
   border-top: 1px solid var(--color-retro-border);
-  background: rgba(255, 255, 255, 0.01);
+  background: rgba(0, 0, 0, 0.02);
 }
 .sc-stat {
   font-family: var(--font-mono);

@@ -6,42 +6,69 @@
     <title>Path of Exile 2 - KEII-DEV</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <script type="module" src="./poe2.ts"></script>
 </head>
-<body class="m-0 p-8 bg-retro-bg font-sans text-retro-text flex justify-center opacity-0 transition-opacity duration-1000">
+<body class="m-0 bg-retro-bg font-sans text-retro-text opacity-0 transition-opacity duration-700">
 
-<div class="w-full max-w-3xl bg-retro-paper p-8 shadow-sm rounded-sm">
+<div class="h-[3px] bg-retro-accent w-full"></div>
+
+<div class="max-w-4xl mx-auto px-8 py-16">
     <div id="nav"></div>
 
-    <h1 class="text-2xl font-medium tracking-wide border-b-2 border-retro-accent inline-block mb-2 pb-1">
-        PATH OF EXILE 2
-    </h1>
-    <div class="text-xs text-retro-muted mb-8 mt-1">
-        <a href="/game/" class="text-retro-muted no-underline border-b border-dashed border-retro-muted hover:text-retro-accent hover:border-retro-accent transition-colors">&lt; BACK TO GAME</a>
-    </div>
+    <header class="mt-16 mb-12">
+        <div class="flex items-center gap-3 mb-4">
+            <a href="/game/" class="font-mono text-[11px] tracking-[0.2em] text-retro-muted no-underline hover:text-retro-accent transition-colors">GAME</a>
+            <span class="text-retro-muted text-[10px]">/</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-bold tracking-tight leading-none mb-4 text-retro-text">
+            PATH OF EXILE 2
+        </h1>
+    </header>
 
-    <section class="mb-8">
-        <h2 class="text-lg font-medium tracking-wide border-b border-retro-border inline-block mb-4 mt-4 pb-1">BUILDS</h2>
+    <hr class="swiss-rule mb-12">
+
+    <section class="mb-12">
+        <div class="flex items-baseline gap-3 mb-6">
+            <span class="section-num">01</span>
+            <h2 class="text-lg font-bold tracking-wide text-retro-text">BUILDS</h2>
+        </div>
         <div id="builds-container"><p class="text-retro-muted text-sm italic py-4">Loading...</p></div>
 
         <a href="/game/poe2/skill-cards/"
-           class="block mt-3 border border-retro-border rounded-sm px-4 py-3 text-sm no-underline transition-all hover:border-retro-accent hover:bg-retro-card-hover group">
-            <span class="text-retro-accent font-mono text-xs tracking-wider">SKILL & SUPPORT CARDS</span>
-            <span class="text-retro-muted text-xs ml-2">— ED Contagion Lich のスキル × サポート構成マップ</span>
-            <span class="text-retro-accent ml-2 transition-transform inline-block group-hover:translate-x-1">&gt;</span>
+           class="cat-card block mt-4 border border-retro-border rounded-sm px-5 py-4 no-underline group">
+            <div class="flex items-center justify-between">
+                <div>
+                    <span class="font-mono text-[11px] text-retro-accent tracking-wider">SKILL & SUPPORT CARDS</span>
+                    <span class="text-retro-muted text-xs ml-3">ED Contagion Lich のスキル × サポート構成マップ</span>
+                </div>
+                <span class="text-retro-accent text-xs opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </div>
         </a>
     </section>
 
-    <section class="mb-8">
-        <h2 class="text-lg font-medium tracking-wide border-b border-retro-border inline-block mb-4 mt-4 pb-1">GAMEPLAY NOTES</h2>
+    <section class="mb-12">
+        <div class="flex items-baseline gap-3 mb-6">
+            <span class="section-num">02</span>
+            <h2 class="text-lg font-bold tracking-wide text-retro-text">GAMEPLAY NOTES</h2>
+        </div>
         <div id="notes-container"><p class="text-retro-muted text-sm italic py-4">Loading...</p></div>
     </section>
 
-    <section class="mb-8">
-        <h2 class="text-lg font-medium tracking-wide border-b border-retro-border inline-block mb-4 mt-4 pb-1">TIPS &amp; MECHANICS</h2>
+    <section class="mb-12">
+        <div class="flex items-baseline gap-3 mb-6">
+            <span class="section-num">03</span>
+            <h2 class="text-lg font-bold tracking-wide text-retro-text">TIPS &amp; MECHANICS</h2>
+        </div>
         <div id="tips-container"><p class="text-retro-muted text-sm italic py-4">Loading...</p></div>
     </section>
+
+    <footer class="mt-24 pt-6 border-t border-retro-border">
+        <div class="flex justify-between items-center">
+            <span class="font-mono text-[10px] text-retro-muted tracking-wider">KEII-DEV.COM</span>
+            <span class="font-mono text-[10px] text-retro-muted tracking-wider">© 2025</span>
+        </div>
+    </footer>
 </div>
 
 </body>

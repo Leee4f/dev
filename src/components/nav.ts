@@ -25,13 +25,13 @@ const navItems: NavItem[] = [
 export function createNav(current?: string): HTMLElement {
   const nav = document.createElement("nav");
   nav.className =
-    "flex items-center gap-6 mb-8 pb-3 border-b border-retro-border";
+    "flex items-center gap-8 pb-6 border-b border-retro-border";
 
   const logo = document.createElement("a");
   logo.href = "/";
-  logo.textContent = "KEII-DEV";
+  logo.innerHTML = '<span class="text-retro-text">K</span><span class="text-retro-accent">-D</span>';
   logo.className =
-    "text-base font-semibold tracking-wider text-retro-text no-underline hover:text-retro-accent transition-colors mr-4";
+    "font-mono text-sm font-bold tracking-widest no-underline hover:opacity-80 transition-opacity mr-auto";
   nav.appendChild(logo);
 
   for (const item of navItems) {
@@ -44,20 +44,20 @@ export function createNav(current?: string): HTMLElement {
       a.textContent = item.label;
       const isActive = current === item.label;
       a.className = isActive
-        ? "text-sm font-medium text-retro-accent no-underline border-b-2 border-retro-accent pb-0.5"
-        : "text-sm font-medium text-retro-muted no-underline hover:text-retro-accent transition-colors";
+        ? "font-mono text-[11px] tracking-[0.2em] text-retro-accent no-underline border-b border-retro-accent pb-1"
+        : "font-mono text-[11px] tracking-[0.2em] text-retro-muted no-underline hover:text-retro-accent transition-colors";
       wrapper.appendChild(a);
 
       const dropdown = document.createElement("div");
       dropdown.className =
-        "absolute top-full left-0 mt-2 py-1 bg-retro-paper border border-retro-border rounded-sm min-w-40 opacity-0 invisible transition-all duration-200 z-50 shadow-lg";
+        "absolute top-full right-0 mt-3 py-2 bg-retro-paper border border-retro-border rounded-sm min-w-44 opacity-0 invisible transition-all duration-200 z-50 shadow-lg";
 
       for (const child of item.children) {
         const link = document.createElement("a");
         link.href = child.href;
         link.textContent = child.label;
         link.className =
-          "block px-4 py-2 text-xs text-retro-muted no-underline hover:text-retro-accent hover:bg-retro-card-hover transition-colors";
+          "block px-4 py-2 font-mono text-[11px] text-retro-muted no-underline hover:text-retro-accent hover:bg-retro-card-hover transition-colors tracking-wider";
         dropdown.appendChild(link);
       }
 
@@ -80,8 +80,8 @@ export function createNav(current?: string): HTMLElement {
       a.textContent = item.label;
       const isActive = current === item.label;
       a.className = isActive
-        ? "text-sm font-medium text-retro-accent no-underline border-b-2 border-retro-accent pb-0.5"
-        : "text-sm font-medium text-retro-muted no-underline hover:text-retro-accent transition-colors";
+        ? "font-mono text-[11px] tracking-[0.2em] text-retro-accent no-underline border-b border-retro-accent pb-1"
+        : "font-mono text-[11px] tracking-[0.2em] text-retro-muted no-underline hover:text-retro-accent transition-colors";
       nav.appendChild(a);
     }
   }

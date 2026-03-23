@@ -4,22 +4,25 @@
   --font-sans: "Inter", "Noto Sans JP", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", "Noto Sans JP", monospace;
 
-  --color-retro-bg: #0d1117;
-  --color-retro-paper: #161b22;
-  --color-retro-text: #e6edf3;
-  --color-retro-muted: #7d8590;
-  --color-retro-accent: #58a6ff;
-  --color-retro-border: #30363d;
-  --color-retro-hover: #79c0ff;
-  --color-retro-dot: #1c2128;
-  --color-retro-card-hover: #1c2128;
-  --color-retro-code-bg: #1c2128;
+  /* Sepia light — vintage parchment palette */
+  --color-retro-bg: #efe9df;
+  --color-retro-paper: #f7f3ec;
+  --color-retro-text: #2c2418;
+  --color-retro-muted: #8a7f72;
+  --color-retro-accent: #a06b30;
+  --color-retro-border: #d5cdc0;
+  --color-retro-hover: #b87d3a;
+  --color-retro-dot: #e5dfd5;
+  --color-retro-card-hover: #f2ede5;
+  --color-retro-code-bg: #eae4d9;
+  --color-retro-rule: #cdc5b6;
+  --color-retro-subtle: #bfb7a8;
 }
 
-/* Dot grid background */
+/* Subtle dot grid — vintage paper texture */
 body {
   background-image: radial-gradient(var(--color-retro-dot) 1px, transparent 1px);
-  background-size: 20px 20px;
+  background-size: 24px 24px;
 }
 
 /* KaTeX math styling */
@@ -35,7 +38,7 @@ body {
   color: var(--color-retro-text);
 }
 
-/* Scrollbar (dark theme) */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -46,6 +49,39 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-retro-border);
+  background: var(--color-retro-subtle);
   border-radius: 3px;
+}
+
+/* Swiss-style decorative rule */
+.swiss-rule {
+  border: none;
+  height: 1px;
+  background: var(--color-retro-rule);
+}
+
+.swiss-rule-accent {
+  border: none;
+  height: 2px;
+  background: var(--color-retro-accent);
+}
+
+/* Section number badge */
+.section-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--color-retro-accent);
+  opacity: 0.7;
+}
+
+/* Category card hover lift */
+.cat-card {
+  transition: border-color 0.2s, transform 0.15s, background-color 0.2s, box-shadow 0.2s;
+}
+.cat-card:hover {
+  border-color: var(--color-retro-accent);
+  background-color: var(--color-retro-card-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(44, 36, 24, 0.08);
 }

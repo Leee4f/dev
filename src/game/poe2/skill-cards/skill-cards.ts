@@ -174,10 +174,10 @@ const sections: Section[] = [
 ];
 
 const typeColors: Record<string, { color: string; bg: string; border: string }> = {
-  offense: { color: "#c084fc", bg: "rgba(192,132,252,0.10)", border: "rgba(192,132,252,0.2)" },
-  debuff: { color: "#f472b6", bg: "rgba(244,114,182,0.10)", border: "rgba(244,114,182,0.2)" },
-  defense: { color: "#60a5fa", bg: "rgba(96,165,250,0.10)", border: "rgba(96,165,250,0.2)" },
-  util: { color: "#fbbf24", bg: "rgba(251,191,36,0.10)", border: "rgba(251,191,36,0.2)" },
+  offense: { color: "#7c3aed", bg: "rgba(124,58,237,0.08)", border: "rgba(124,58,237,0.2)" },
+  debuff: { color: "#db2777", bg: "rgba(219,39,119,0.08)", border: "rgba(219,39,119,0.2)" },
+  defense: { color: "#2563eb", bg: "rgba(37,99,235,0.08)", border: "rgba(37,99,235,0.2)" },
+  util: { color: "#b45309", bg: "rgba(180,83,9,0.08)", border: "rgba(180,83,9,0.2)" },
 };
 
 function renderCard(card: SkillCard): string {
@@ -237,12 +237,12 @@ function renderAll(): string {
 
   html += `
     <div class="sc-legend">
-      <div class="sc-legend-item"><div class="sc-legend-dot" style="background:#c084fc"></div>Offense（攻撃）</div>
-      <div class="sc-legend-item"><div class="sc-legend-dot" style="background:#f472b6"></div>Debuff（弱体化）</div>
-      <div class="sc-legend-item"><div class="sc-legend-dot" style="background:#fbbf24"></div>Utility（補助）</div>
-      <div class="sc-legend-item"><div class="sc-legend-dot" style="background:#7edc6a"></div><span class="font-mono">more</span> = 乗算</div>
+      <div class="sc-legend-item"><div class="sc-legend-dot" style="background:#7c3aed"></div>Offense（攻撃）</div>
+      <div class="sc-legend-item"><div class="sc-legend-dot" style="background:#db2777"></div>Debuff（弱体化）</div>
+      <div class="sc-legend-item"><div class="sc-legend-dot" style="background:#b45309"></div>Utility（補助）</div>
+      <div class="sc-legend-item"><div class="sc-legend-dot" style="background:var(--color-retro-accent)"></div><span class="font-mono">more</span> = 乗算</div>
       <div class="sc-legend-item"><div class="sc-legend-dot" style="background:#ef5350"></div><span class="font-mono">less</span> = 代償</div>
-      <div class="sc-legend-item"><div class="sc-legend-dot" style="background:#fbbf24"></div><span class="italic">note</span> = 設計意図</div>
+      <div class="sc-legend-item"><div class="sc-legend-dot" style="background:var(--color-retro-hover)"></div><span class="italic">note</span> = 設計意図</div>
     </div>
     <footer class="sc-footer">
       <p>Build: <a href="https://mobalytics.gg/poe-2/builds/chaos-dot-lich-starter-deadrabbit">DEADRABB1T — Mobalytics</a> / Patch 0.4 Campaign Variant</p>
